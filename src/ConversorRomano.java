@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -21,12 +22,28 @@ public class ConversorRomano {
 	}
 
 	public String converterNumero(Integer numero) {
+
+		int check = numero;
+
+		while (check > 0) {
+
+		}
+
 		return this.algarismos.get(numero);
+	}
+
+	public void buscarMaiorAlgarismoQueAtenda(int numero) {
+		Iterator it = this.algarismos.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			
+			System.out.println(pair.getKey() + " = " + pair.getValue());
+		}
 	}
 
 	public Integer verificarAlgarismo(String algarismo) {
 		String algarismoFormatado = algarismo.toUpperCase();
-		
+
 		for (Entry<Integer, String> entry : this.algarismos.entrySet()) {
 			if (entry.getValue().equals(algarismoFormatado)) {
 				return entry.getKey();

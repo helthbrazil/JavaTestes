@@ -33,5 +33,5 @@ public class TesteRomano {
 		int numero = conversor.verificarAlgarismo("X");
 		Assert.assertEquals(10, numero);
 	}
-
+	
 }
