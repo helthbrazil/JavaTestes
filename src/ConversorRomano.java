@@ -128,7 +128,7 @@ public class ConversorRomano {
 
 		if (controleMilhar < 4) {
 			for (int i = 0; i < controleMilhar; i++) {
-				resultado+= algarismos.get(6).getAlgarismo();
+				resultado += algarismos.get(6).getAlgarismo();
 			}
 		} else if (controleMilhar == 4) {
 
@@ -146,6 +146,26 @@ public class ConversorRomano {
 			resultado += converterDezenas(mod);
 		} else if (mod != 0) {
 			resultado += converterUnidades(mod);
+		}
+
+		return resultado;
+	}
+
+	public String converterDecimalToRomano(int decimal) throws Exception {
+		if (decimal < 1 || decimal > 3999) {
+			throw new Exception("Número inválido. O valor deve ser maior que 0 e menor que 3999");
+		}
+
+		String resultado = "";
+
+		if (decimal >= 1000) {
+			return this.converterMilhar(decimal);
+		} else if (decimal >= 100) {
+			return this.converterCentena(decimal);
+		} else if (decimal >= 10) {
+			return this.converterDezenas(decimal);
+		} else if (decimal >= 1) {
+			return this.converterUnidades(decimal);
 		}
 
 		return resultado;

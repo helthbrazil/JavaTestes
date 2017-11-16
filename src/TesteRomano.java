@@ -33,5 +33,21 @@ public class TesteRomano {
 		String romano = conversorRomano.converterMilhar(3999);
 		Assert.assertEquals("MMMCMXCIX", romano);
 	}
+	
+	@Test
+	public void testeConversaoDecimalParaRomano() throws Exception{
+		ConversorRomano conversorRomano = new ConversorRomano();
+		String romanoTeste1 = conversorRomano.converterDecimalToRomano(1);
+		Assert.assertEquals("I", romanoTeste1);
+		
+		String romanoTeste2 = conversorRomano.converterDecimalToRomano(47);
+		Assert.assertEquals("XLVII", romanoTeste2);
+		
+		String romanoTeste3 = conversorRomano.converterDecimalToRomano(619);
+		Assert.assertEquals("DCXIX", romanoTeste3);
+		
+		String romanoTeste4 = conversorRomano.converterDecimalToRomano(3453);
+		Assert.assertEquals("MMMCDLIII", romanoTeste4);
+	}
 
 }
