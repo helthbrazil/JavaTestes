@@ -14,10 +14,24 @@ public class TesteRomano {
 	}
 	
 	@Test
-	public void testeConversaoDezenda() throws Exception {
+	public void testeConversaoDezena() throws Exception {
 		ConversorRomano conversorRomano = new ConversorRomano();
-		String romano = conversorRomano.converterDezenas(94);
-		Assert.assertEquals("XCIV", romano);
+		String romano = conversorRomano.converterDezenas(99);
+		Assert.assertEquals("XCIX", romano);
+	}
+	
+	@Test
+	public void testeConversaoCentena() throws Exception {
+		ConversorRomano conversorRomano = new ConversorRomano();
+		String romano = conversorRomano.converterCentena(900);
+		Assert.assertEquals("CM", romano);
+	}
+	
+	@Test
+	public void testeConversaoMilhar() throws Exception {
+		ConversorRomano conversorRomano = new ConversorRomano();
+		String romano = conversorRomano.converterMilhar(3999);
+		Assert.assertEquals("MMMCMXCIX", romano);
 	}
 
 }

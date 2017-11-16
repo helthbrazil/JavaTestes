@@ -68,8 +68,9 @@ public class ConversorRomano {
 		} else if (dezenaControle == 5) {
 			resultado = algarismos.get(3).getAlgarismo();
 		} else if (dezenaControle > 5 && dezenaControle < 9) {
+			int controle = dezenaControle - (algarismos.get(3).getValor()) / 10;
 			resultado = algarismos.get(3).getAlgarismo();
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < controle; i++) {
 				resultado += algarismos.get(2).getAlgarismo();
 			}
 		} else {
@@ -77,6 +78,73 @@ public class ConversorRomano {
 		}
 
 		if (mod != 0) {
+			resultado += converterUnidades(mod);
+		}
+
+		return resultado;
+	}
+
+	public String converterCentena(int centena) throws Exception {
+		String resultado = "";
+		if (centena < 100 || centena > 999) {
+			throw new Exception("Centena inválida");
+		}
+		int centenaControle = centena / 100;
+		int mod = centena % 100;
+
+		if (centenaControle < 4) {
+			for (int i = 0; i < centenaControle; i++) {
+				resultado += algarismos.get(4).getAlgarismo();
+			}
+		} else if (centenaControle == 4) {
+			resultado = algarismos.get(4).getAlgarismo() + algarismos.get(5).getAlgarismo();
+		} else if (centenaControle == 5) {
+			resultado = algarismos.get(5).getAlgarismo();
+		} else if (centenaControle > 5 && centenaControle < 9) {
+			int controle = centenaControle - (algarismos.get(5).getValor()) / 100;
+			resultado = algarismos.get(5).getAlgarismo();
+			for (int i = 0; i < controle; i++) {
+				resultado += algarismos.get(4).getAlgarismo();
+			}
+		} else {
+			resultado = algarismos.get(4).getAlgarismo() + algarismos.get(6).getAlgarismo();
+		}
+		if (mod > 9)
+			resultado += converterDezenas(mod);
+		else if (mod != 0)
+			resultado += converterUnidades(mod);
+
+		return resultado;
+	}
+
+	public String converterMilhar(int milhar) throws Exception {
+		String resultado = "";
+		if (milhar < 1000 || milhar > 3999) {
+			throw new Exception("Milhar inválida");
+		}
+
+		int controleMilhar = milhar / 1000;
+		int mod = milhar % 1000;
+
+		if (controleMilhar < 4) {
+			for (int i = 0; i < controleMilhar; i++) {
+				resultado+= algarismos.get(6).getAlgarismo();
+			}
+		} else if (controleMilhar == 4) {
+
+		} else if (controleMilhar == 5) {
+
+		} else if (controleMilhar > 5 && controleMilhar < 9) {
+
+		} else {
+
+		}
+
+		if (mod > 99) {
+			resultado += converterCentena(mod);
+		} else if (mod > 9) {
+			resultado += converterDezenas(mod);
+		} else if (mod != 0) {
 			resultado += converterUnidades(mod);
 		}
 
